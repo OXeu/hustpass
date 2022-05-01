@@ -1,0 +1,3 @@
+FROM alpine
+COPY ./auth /opt/auth
+ENTRYPOINT ["/opt/auth"]
