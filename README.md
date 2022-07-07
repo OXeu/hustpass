@@ -1,5 +1,5 @@
 # HUST PASS
-[![Build Status](https://drone.server.usfl.cn/api/badges/xeu/hust_pass/status.svg)](https://drone.server.usfl.cn/xeu/hust_pass)
+[![Build Status](https://drone.kafi.work/api/badges/xeu/hust_pass/status.svg)](https://drone.kafi.work/xeu/hust_pass)
 
 自动过校园网认证
 ## 使用说明
