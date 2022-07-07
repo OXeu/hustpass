@@ -3,4 +3,15 @@ services:
   hust_pass:
     build: .
     container_name: hust-pass
-    restart: unless-stopped
+    restart: always
+    networks:
+      - auth
+
+networks:
+    auth:
+        driver: bridge
+        ipam:
+            driver: default
+            config:# 随便分配一个局域子网段，只要不把 172.18.18.0(认证网页ip段) 网段分配掉就行
+                - subnet: 172.16.238.0/24
+                gateway: 172.16.238.1
