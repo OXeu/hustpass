@@ -29,3 +29,16 @@ clone 该仓库，修改 `main.go` 中的 `username` 和 `password` 常量
 将自动下载 构建镜像 进行构建并打包镜像自动运行
 
 无需安装`Golang`编译环境
+
+
+# 常见问题
+1. 启用 Docker 后认证网页无法访问
+大概率是Docker自动生成的网络把`172.18.18.0`这个子网段给占了导致认证请求回到了容器内  
+输入 `ifconfig` 查看网络配置  
+如果存在如下配置的网络
+```
+br-0aaf5b13ef7d ....
+inet addr:172.18.0.1  Bcast:172.18.255.255(这个不重要)  Mask:255.255.0.0
+```
+则输入`docker  network ls` 查看 `0aaf5b13ef7d`(`br-`后的跟随的内容) 对应的虚拟网卡，使用`docker network rm 0aaf5b13ef7d` 移除该虚拟网卡，如果移除失败，需先移除使用该网卡的容器`docker ps`查看活跃容器,`docker stop (容器id)`停止容器，之后再移除网卡
+
